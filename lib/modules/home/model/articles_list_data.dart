@@ -80,7 +80,7 @@ class Articles {
     _title = json['title'];
     _description = json['description'];
     _url = json['url'];
-    _urlToImage = json['urlToImage'];
+    _urlToImage = json['urlToImage'] as String?;
     _publishedAt = json['publishedAt'];
     _content = json['content'];
   }

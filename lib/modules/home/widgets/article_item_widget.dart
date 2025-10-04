@@ -18,35 +18,38 @@ class ArticleItemWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         border: Border.all(color: Colors.black),
       ), // BoxDecoration
-      child: Column(
-          spacing: 10,
+      child: Column(crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            CachedNetworkImage(
-              imageUrl: articles.urlToImage ?? '',
-              imageBuilder: (context, imageProvider) =>
-                  Container(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: imageProvider,
-                          fit: BoxFit.cover,
-                          colorFilter:
-                          ColorFilter.mode(Colors.red, BlendMode.colorBurn)),
+            SizedBox(height: 200,
+              child: CachedNetworkImage(
+                imageUrl: articles.urlToImage ?? '',
+                imageBuilder: (context, imageProvider) =>
+                    Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: imageProvider,
+                            fit: BoxFit.cover,
+                            colorFilter:
+                            ColorFilter.mode(Colors.red, BlendMode.colorBurn)),
+                      ),
                     ),
-                  ),
-              placeholder: (context, url) => CircularProgressIndicator(),
-              errorWidget: (context, url, error) => Icon(Icons.error),
+                placeholder: (context, url) => CircularProgressIndicator(),
+                errorWidget: (context, url, error) => Icon(Icons.error),
+              ),
             ),
+            SizedBox(height: 10),
             Text(
                 articles.title ?? "",
                 style: theme.textTheme.titleMedium?.copyWith(
-                    color: Colors.black)), // Text
+                    color: Colors.black)),
+            SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                     articles.source?.name ?? "",
                     style: theme.textTheme.titleMedium?.copyWith(
-                        color: Color(0xFFA0A0A0))), // Text
+                        color: Color(0xFFA0A0A0))),
                 Text(
                     articles.publishedAt ?? "",
                     style: theme.textTheme.titleMedium?.copyWith(

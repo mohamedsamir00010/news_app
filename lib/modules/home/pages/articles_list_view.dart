@@ -3,6 +3,8 @@ import "package:news_app_c15_mon/modules/home/model/articles_list_data.dart";
 import "package:news_app_c15_mon/modules/home/model/source_data.dart";
 import "package:news_app_c15_mon/network/api_request.dart";
 
+import "../widgets/article_item_widget.dart";
+
 class ArticlesListView extends StatelessWidget {
   final SourceData sourceData;
 
@@ -23,7 +25,7 @@ class ArticlesListView extends StatelessWidget {
 
         return ListView.separated(
           itemBuilder: (context, int index) {
-            return Text(articlesList[index].title.toString());
+            return ArticleItemWidget( articles: articlesList[index],);
           },
           separatorBuilder: (BuildContext context, int index) {
             return SizedBox(height: 16);
